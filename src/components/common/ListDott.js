@@ -12,6 +12,7 @@ export default class ListDott extends Component {
 
 const DottWrapper = styled.div`
   width: 20px;
+  min-width: 20px;
   height: 20px;
   border: solid 2px #4a4a4a;
   border-radius: 50%;

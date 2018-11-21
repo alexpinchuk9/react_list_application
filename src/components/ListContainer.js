@@ -60,12 +60,4 @@ const mapStateToProps = state => {
     );
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchInitialListItem: () => {
-      dispatch(fetchInitialListItem());
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListContainer)
+export default connect(mapStateToProps, {fetchInitialListItem})(ListContainer)

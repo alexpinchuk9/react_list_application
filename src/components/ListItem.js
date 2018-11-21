@@ -48,12 +48,4 @@ const WrapperStyled = styled.div`
   }
 `;
 
-function mapDispatchToProps(dispatch) {
-  return {
-    toggleListItem: (id) => {
-      dispatch(toggleListItem(id));
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(ListItem)
+export default connect(null, {toggleListItem})(ListItem)

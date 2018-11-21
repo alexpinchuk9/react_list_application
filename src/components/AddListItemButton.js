@@ -30,12 +30,4 @@ const WrapperStyled = styled.div`
   }
 `;
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchAddNewListItem: () => {
-      dispatch(fetchAddNewListItem());
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(AddListItemButton)
+export default connect(null, {fetchAddNewListItem})(AddListItemButton)

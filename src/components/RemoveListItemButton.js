@@ -92,12 +92,4 @@ const ButtonStyled = styled.div`
   background: ${props => props.color};
 `;
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchRemoveListItem: (id) => {
-      dispatch(fetchRemoveListItem(id));
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(RemoveListItemButton)
+export default connect(null, {fetchRemoveListItem})(RemoveListItemButton)

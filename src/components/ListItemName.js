@@ -50,7 +50,7 @@ class ListItemName extends Component {
     const { isEditing, name } = this.state;
     return (
       isEditing ?
-        <NameStyled onClick={(e) => e.stopPropagation()}>
+        <NameWraperStyled onClick={(e) => e.stopPropagation()}>
           <InputNameStyled
             type="text"
             autoFocus
@@ -58,12 +58,14 @@ class ListItemName extends Component {
             onChange={this.changeHandler}
             onBlur={(e) => this.editItem(e)}
           />
-        </NameStyled>
+        </NameWraperStyled>
         :
-        <NameStyled>
-          {item.name}
+        <NameWraperStyled>
+          <NameStyled>
+            {item.name}
+          </NameStyled>
           <EditStyled src={edit} alt="" onClick={(e) => this.editItem(e)} />
-        </NameStyled>
+        </NameWraperStyled>
     )
   }
 }
@@ -74,7 +76,7 @@ const InputNameStyled = styled.input`
   outline: none;
 `;
 
-const NameStyled = styled.div`
+const NameWraperStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,6 +85,13 @@ const NameStyled = styled.div`
   font-size: 20px;
   font-weight: 300;
   color: #4a4a4a;
+  width: calc(100% - 100px);
+`;
+
+const NameStyled = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const EditStyled = styled.img`
@@ -91,12 +100,4 @@ const EditStyled = styled.img`
   padding: 15px;
 `;
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchEditListItem: (data) => {
-      dispatch(fetchEditListItem(data));
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(ListItemName)
+export default connect(null, {fetchEditListItem})(ListItemName)
